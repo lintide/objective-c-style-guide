@@ -16,47 +16,76 @@ Here are some of the documents from Apple that informed the style guide. If some
 ## Table of Contents
 
 * [Dot-Notation Syntax](#dot-notation-syntax)
+* [点表达式](#dot-notation-syntax)
 * [Spacing](#spacing)
+* [空白](#spacing)
 * [Conditionals](#conditionals)
+* [条件表达式]
   * [Ternary Operator](#ternary-operator)
+  * [三元操作符]
 * [Methods](#methods)
+* [方法]
 * [Variables](#variables)
+* [变量]
 * [Naming](#naming)
+* [命名]
   * [Underscores](#underscores)
+  * [下划线]
 * [Comments](#comments)
+* [注释]
 * [Init & Dealloc](#init-and-dealloc)
+* [Init & Dealloc]
 * [Literals](#literals)
+* [字变量]
 * [CGRect Functions](#cgrect-functions)
+* [CGRect 函数]
 * [Constants](#constants)
+* [常数]
 * [Enumerated Types](#enumerated-types)
+* [枚举类型]
 * [Private Properties](#private-properties)
+* [私有属性]
 * [Image Naming](#image-naming)
+* [图片命名]
 * [Booleans](#booleans)
+* [布尔值]
 * [Singletons](#singletons)
+* [单例]
 * [Xcode Project](#xcode-project)
+* [Xcode 项目]
+* 使用`#pragram - `
+* 项目目录结构
 
 ## Dot-Notation Syntax
+## 点表达式语法
 
 Dot-notation should **always** be used for accessing and mutating properties. Bracket notation is preferred in all other instances.
+访问和改变属性时应该 **总是** 使用点表达式。产生其它实例优先使用方括号表达式语法。
 
 **For example:**  
+**例如:**
 ```objc
 view.backgroundColor = [UIColor orangeColor];
 [UIApplication sharedApplication].delegate;
 ```
 
 **Not:**
+**而非:**
 ```objc
 [view setBackgroundColor:[UIColor orangeColor]];
 UIApplication.sharedApplication.delegate;
 ```
 
 ## Spacing
+## 留空
 
 * Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
+* 缩进采用4个空格，不要使用tabs。请确认在Xcode的首选项中已经设置。
 * Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* 方法的花括号及其它花括号(`if`/`else`/`switch`/`while` etc.) 的左花括号总是在表达式的同一行，右括号在新的一行。
 
 **For example:**  
+**例如：**
 ```objc
 if (user.isHappy) {
 //Do something
@@ -66,11 +95,16 @@ else {
 }
 ```
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
+* 为了代码的清晰和组织性，在方法之间应该有确当的空白行。方法内代码以功能性进行分隔，这通常也表示应该抽象出一个新的方法了。
 * `@synthesize` and `@dynamic` should each be declared on new lines in the implementation.
+* 每一个`@synthesize` 和 `@dynamic` 在`implementation`中应该定义为单独一行。
 
 ## Conditionals
+## 条件
 
 Conditional bodies should always use braces even when a conditional body could be written without braces (e.g., it is one line only) to prevent [errors](https://github.com/NYTimes/objective-c-style-guide/issues/26#issuecomment-22074256). These errors include adding a second line and expecting it to be part of the if-statement. Another, [even more dangerous defect](http://programmers.stackexchange.com/a/16530) may happen where the line "inside" the if-statement is commented out, and the next line unwittingly becomes part of the if-statement. In addition, this style is more consistent with all other conditionals, and therefore more easily scannable.
+
+条件的执行体应该总是使用花括号，即使执行体只有一行。
 
 **For example:**
 ```objc
